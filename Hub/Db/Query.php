@@ -85,7 +85,7 @@ class Query extends Base
         return $query->select('*')
             ->from('information_schema.tables')
             ->where([
-                ['table_schema', '=', Frame::$app->ini->mysql['dbname']],
+                ['table_schema', '=', Frame::$app->config->mysql['dbname']],
                 ['table_name', '=', $tableName]
             ])->exists();
     }

@@ -16,7 +16,7 @@ class Request extends \Hub\Base\Request
         }
 
         if(strpos($path, "?") > -1){
-            $path = substr($path, 0, strpos("?", $path));
+            $path = substr($path, 0, strpos($path, "?"));
         }
 
         $this->setPath($path);
@@ -25,7 +25,10 @@ class Request extends \Hub\Base\Request
         $method = strtolower($method);
 
         $this->setMethod($method);
-        $this->addParameter("test", "best");
+
+        foreach($_GET as $k => $v){
+            $this->addParameter($k, $v);
+        }
     }
 
     public function getRoutes()

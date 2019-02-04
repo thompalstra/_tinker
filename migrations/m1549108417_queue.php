@@ -39,7 +39,6 @@ class m1549108417_queue extends Migration
             Query::createTable('failed_jobs', [
                 'id' => 'INT(11) PRIMARY KEY AUTO_INCREMENT',
                 'queue' => 'VARCHAR(255) NOT NULL',
-                'status' => 'INT(11) NOT NULL',
                 'task' => 'VARCHAR(255) NOT NULL',
                 'arguments' => 'TEXT NOT NULL',
                 'message' => 'TEXT NOT NULL',
@@ -52,7 +51,6 @@ class m1549108417_queue extends Migration
             Query::createTable('completed_jobs', [
                 'id' => 'INT(11) PRIMARY KEY AUTO_INCREMENT',
                 'queue' => 'VARCHAR(255) NOT NULL',
-                'status' => 'INT(11) NOT NULL',
                 'task' => 'VARCHAR(255) NOT NULL',
                 'arguments' => 'TEXT NOT NULL',
                 'updated_at' => 'INT(11)',

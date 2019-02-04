@@ -29,17 +29,12 @@ class Application extends Base
 
         $this->root = dirname(__DIR__);
 
-        $ini = Frame::path([$this->root, 'app.ini']);
-        if(file_exists($ini)){
-            $this->ini = (object) parse_ini_file($ini, true);
+        $config = Frame::path([$this->root, 'config.php']);
+        if(file_exists($config)){
+            $this->config = (object) include($config);
         }
-        
-        $host = $this->ini->mysql['host'];
-        $dbname = $this->ini->mysql['dbname'];
-        $user = $this->ini->mysql['user'];
-        $password = $this->ini->mysql['password'];
 
-        $this->db = new PDO("mysql:host={$host};dbname={$dbname}", "{$user}", "{$password}");
+        $this->db = new PDO("mysql:host={$this->config->mysql['host']};dbname={$this->config->mysql['dbname']}", "{$this->config->mysql['user']}", "{$this->config->mysql['password']}");
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $this->controller = new Controller();
 
