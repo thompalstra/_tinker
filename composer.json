@@ -2,6 +2,6 @@
     "name": "ioxo/tinker-framework",
     "description": "A short description of what your package does",
     "require": {
-        "php": "^7.2",
+        "php": "^7.2"
     }
 }
